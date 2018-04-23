@@ -41,6 +41,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rx.Observable;
@@ -57,6 +58,9 @@ public class PsiMapActivityFragment extends Fragment implements PsiMapContract.V
     Gson gson;
 
     GoogleMap googleMap;
+
+    @BindView(R.id.title)
+    TextView titleTextView;
 
     PsiMapContract.Model model;
 
@@ -178,6 +182,18 @@ public class PsiMapActivityFragment extends Fragment implements PsiMapContract.V
     @Override
     public String getStringFromStringResId(int stringResID) {
         return getString(stringResID);
+    }
+
+    @Override
+    public void showTitle(String str) {
+        ViewGroup parent = (ViewGroup) titleTextView.getParent();
+        parent.setVisibility(View.VISIBLE);
+        if (str==null || str.isEmpty()){
+            titleTextView.setText(getString(R.string.label_status_na));
+        }else{
+            titleTextView.setText(getString(R.string.label_status, str));
+        }
+
     }
 
     @OnClick(R.id.populateButton)
