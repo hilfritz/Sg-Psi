@@ -24,7 +24,7 @@
     <string name="label_company">Company</string>
     <string name="label_name">Name</string>
     <string name="label_loading">Loading...</string>
-    <string name="label_no_internet">No internet connection. Please ensure you have internet connection and try again.</string>
+    <string name="label_no_internet">No internet connection. \n Please ensure you have internet connection and try again.</string>
     <string name="label_connection_error">Connection error. Please try again.</string>
     <string name="label_no_data">Yikes, sorry there are no places available to view right now.</string>
 
