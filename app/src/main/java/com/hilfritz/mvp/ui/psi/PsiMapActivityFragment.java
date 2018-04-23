@@ -117,12 +117,11 @@ public class PsiMapActivityFragment extends Fragment implements PsiMapContract.V
 
     @Override
     public void showMapWithData(PsiPojo psiPojo) {
-        long d = System.currentTimeMillis();
+
         googleMap.clear();
 
         int size = psiPojo.getRegionMetadata().size();
         List<MarkerOptions> markerOptionsList = new ArrayList<MarkerOptions>();
-        log("showMapWithData: size:"+size);
 
         //Set Custom InfoWindow Adapter
         MapInfoWindow adapter = new MapInfoWindow(getActivity());
@@ -136,7 +135,6 @@ public class PsiMapActivityFragment extends Fragment implements PsiMapContract.V
             String name = psiPojo.getRegionMetadata().get(x).getName();
             String snippet = psiPojo.getRegionMetadata().get(x).getMapSnippet();
 
-            log("showMapWithData: lat:"+ latitude +" lng:"+ longitude +" name:"+ name);
             LatLng ltlng = new LatLng(
                     latitude,
                     longitude
@@ -175,8 +173,6 @@ public class PsiMapActivityFragment extends Fragment implements PsiMapContract.V
         }
         googleMap.animateCamera(cu);
 
-        log("showMapWithData: took:"+(System.currentTimeMillis()-d)+" ms");
-        //Toast.makeText(getActivity(), (System.currentTimeMillis()-d)+" ms", Toast.LENGTH_SHORT).show();
     }
 
     @Override
