@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import retrofit2.adapter.rxjava.HttpException;
 import rx.Observable;
@@ -47,6 +48,7 @@ public class PsiMapPresenterImpl implements PsiMapContract.Presenter {
         view.showLoading();
         //2. CALL PSI DATA FROM API
         getAllPsiSubscription = model.getAllPsi()
+                .delay(500, TimeUnit.MILLISECONDS)
                 .flatMap(new Func1<PsiPojo, Observable<PsiPojo>>() {
                     @Override
                     public Observable<PsiPojo> call(PsiPojo psiPojo) {
