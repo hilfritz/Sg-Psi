@@ -109,7 +109,13 @@ public class PsiMapPresenterImpl implements PsiMapContract.Presenter {
                             view.showDialogWithMessage(view.getStringFromStringResId(R.string.something_went_wrong));
                             return;
                         }
+                        String status = "";
+                        if (psiPojo.getApiInfo()!=null){
+                            status = psiPojo.getApiInfo().getStatus();
+                        }
+                        view.showTitle(status);
                         view.showMapWithData(psiPojo);
+
                     }
                 });
     }

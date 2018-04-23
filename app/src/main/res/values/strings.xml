@@ -85,5 +85,6 @@
     <string name="something_went_wrong">Something went wrong. Please try again.</string>
     <string name="not_available_region_data">PSI region data not available. Please try again later.</string>
     <string name="google_maps_key">AIzaSyBOEKcFKSFOexwrl79ARCATuPn6k6fZGQQ</string>
-
+    <string name="label_status">Status: %1$s</string>
+    <string name="label_status_na">Status: Not Available</string>
 </resources>

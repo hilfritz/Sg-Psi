@@ -4,7 +4,6 @@ import com.hilfritz.mvp.api.psi.pojo.PsiPojo;
 
 import rx.Observable;
 import rx.Scheduler;
-import rx.schedulers.Schedulers;
 
 /**
  * @author Hilfritz Camallere on {$Date}
@@ -27,5 +26,6 @@ public interface PsiMapContract {
         void showDialogWithMessage(String str);
         void showMapWithData(PsiPojo psiPojo);
         String getStringFromStringResId(int stringResID);
+        void showTitle(String str);
     }
 }
