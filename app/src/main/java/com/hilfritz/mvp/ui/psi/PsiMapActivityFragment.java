@@ -6,47 +6,36 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.hilfritz.mvp.R;
 import com.hilfritz.mvp.api.psi.PsiRestInterface;
 import com.hilfritz.mvp.api.psi.pojo.Item;
 import com.hilfritz.mvp.api.psi.pojo.PsiPojo;
-import com.hilfritz.mvp.api.psi.pojo.Readings;
-import com.hilfritz.mvp.api.psi.pojo.RegionMetadatum;
 import com.hilfritz.mvp.application.MyApplication;
 import com.hilfritz.mvp.ui.dialog.SimpleDialog;
 import com.hilfritz.mvp.ui.loading.FullscreenLoadingDialog;
 import com.hilfritz.mvp.ui.psi.views.MapInfoWindow;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,7 +53,9 @@ public class PsiMapActivityFragment extends Fragment implements PsiMapContract.V
     PsiMapContract.Presenter presenter;
     @Inject
     PsiRestInterface api;
+    @Inject
     Gson gson;
+
     GoogleMap googleMap;
 
     PsiMapContract.Model model;
@@ -78,7 +69,6 @@ public class PsiMapActivityFragment extends Fragment implements PsiMapContract.V
         super.onCreate(savedInstanceState);
         //INITIALIZE INJECTION
         ((MyApplication)getActivity().getApplication()).getAppComponent().inject(this);
-        gson = new Gson();
     }
 
     @Override
@@ -121,18 +111,14 @@ public class PsiMapActivityFragment extends Fragment implements PsiMapContract.V
 
     @Override
     public void showDialogWithMessage(String str) {
-        SimpleDialog simpleDialog = SimpleDialog.newInstance(str, android.R.drawable.ic_dialog_info, true, false);
+        SimpleDialog simpleDialog = SimpleDialog.newInstance(str, 0, true, false);
         simpleDialog.show(getFragmentManager(), SimpleDialog.TAG);
     }
 
     @Override
     public void showMapWithData(PsiPojo psiPojo) {
-        //Toast.makeText(getActivity(), psiPojo.toString()+"", Toast.LENGTH_SHORT).show();
         long d = System.currentTimeMillis();
         googleMap.clear();
-
-
-
 
         int size = psiPojo.getRegionMetadata().size();
         List<MarkerOptions> markerOptionsList = new ArrayList<MarkerOptions>();
@@ -190,7 +176,7 @@ public class PsiMapActivityFragment extends Fragment implements PsiMapContract.V
         googleMap.animateCamera(cu);
 
         log("showMapWithData: took:"+(System.currentTimeMillis()-d)+" ms");
-        Toast.makeText(getActivity(), (System.currentTimeMillis()-d)+" ms", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(), (System.currentTimeMillis()-d)+" ms", Toast.LENGTH_SHORT).show();
     }
 
     @Override

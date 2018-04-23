@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:text=""
             android:textAlignment="center"
-            android:textColor="@color/dialog_text"
+            android:textColor="@color/text_color"
             android:textSize="@dimen/dialog_text_size"
             tools:visibility="visible"
             tools:text="sdfsadlfjslkjdflskfdlskjfsdfssdfsfdskljfalsdkjflskjdflskjdflksjdlkfjsldkfjlskjfalkdjflksjdflkajsldkfjslkdfjlskdjflskdjflsakjlsdkfjlskdjflskajdfl"
@@ -41,6 +41,8 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/margin_b"
             android:layout_marginRight="@dimen/margin_h"
+            android:layout_marginTop="@dimen/margin_d"
+            android:layout_marginBottom="@dimen/margin_d"
             />
 
 
