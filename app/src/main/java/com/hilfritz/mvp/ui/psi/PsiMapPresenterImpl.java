@@ -87,7 +87,7 @@ public class PsiMapPresenterImpl implements PsiMapContract.Presenter {
                         } else if (e instanceof IOException) {
                             message = view.getStringFromStringResId(R.string.label_connection_error);
                         } else {
-                            message = e.getMessage();
+                            message = view.getStringFromStringResId(R.string.something_went_wrong);
                         }
 
                         view.showDialogWithMessage(message);
