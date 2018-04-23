@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+
+    <item
+        android:id="@+id/sortAz"
+        android:showAsAction="always"
+        android:title="@string/sort_az"
+        />
+    <item
+        android:id="@+id/sortZa"
+        android:showAsAction="always"
+        android:title="@string/sort_za"
+        />
+
+</menu>

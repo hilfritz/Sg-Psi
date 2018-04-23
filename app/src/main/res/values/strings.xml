@@ -1,0 +1,88 @@
+<resources>
+    <string name="app_name">@string/title_activity_psi_map</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="error_loading_listview">Error loading users, please make sure you have good internet connection.\n Error detail: %1$s</string>
+    <string name="error_loading_listview2">Error loading users, please make sure you have good internet connection and load again from the server.\n Error detail: %1$s</string>
+    <string name="try_again">\n Click here to try again.</string>
+    <string name="sort_az">Sort A-Z</string>
+    <string name="sort_za">Sort Z-A</string>
+    <string name="sort_az_load">Sorting A-Z</string>
+    <string name="sort_za_load">Sorting Z-A</string>
+    <string name="loading_users">Loading list of contacts from server...</string>
+
+
+    <string name="view_tag1">viewTag1</string>
+    <string name="title_activity_user_detail">User Details </string>
+    <string name="action_settings">Settings</string>
+
+    <!-- related to user details-->
+    <string name="label_username">Username</string>
+    <string name="label_phone">Phone</string>
+    <string name="label_address">Address</string>
+    <string name="label_website">Website</string>
+    <string name="label_company">Company</string>
+    <string name="label_name">Name</string>
+    <string name="label_loading">Loading...</string>
+    <string name="label_no_internet">No internet connection...</string>
+    <string name="label_no_data">Yikes, sorry there are no places available to view right now.</string>
+
+    <string name="owner">Hilfritz P. Camallere
+        camallere_h@yahoo.com.ph
+    </string>
+
+    <string-array name="label_long_month_array">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
+    <string-array name="label_month_array">
+        <item>Jan</item>
+        <item>Feb</item>
+        <item>Mar</item>
+        <item>Apr</item>
+        <item>May</item>
+        <item>Jun</item>
+        <item>Jul</item>
+        <item>Aug</item>
+        <item>Sept</item>
+        <item>Oct</item>
+        <item>Nov</item>
+        <item>Dec</item>
+    </string-array>
+
+    <string-array name="label_weekday_short_array">
+        <item>Sun</item>
+        <item>Mon</item>
+        <item>Tues</item>
+        <item>Wed</item>
+        <item>Thu</item>
+        <item>Fri</item>
+        <item>Sat</item>
+    </string-array>
+    <string-array name="label_weekday_array">
+        <item>Sunday</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+    </string-array>
+    <string name="title_activity_place_list">Top Places to visit</string>
+    <string name="title_activity_psi_map">Singapore PSI</string>
+
+    <string name="something_went_wrong">Something went wrong. Please try again.</string>
+    <string name="not_available_region_data">PSI region data not available. Please try again later.</string>
+    <string name="google_maps_key">AIzaSyBOEKcFKSFOexwrl79ARCATuPn6k6fZGQQ</string>
+
+</resources>

@@ -1,0 +1,94 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="padding_a">10dp</dimen>
+    <dimen name="padding_b">3dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+
+    <!-- TODO create one for other sizes-->
+    <dimen name="fontSizeDisplay4">112sp</dimen>
+    <dimen name="fontSizeDisplay3">56sp</dimen>
+    <dimen name="fontSizeDisplay2">45sp</dimen>
+    <dimen name="fontSizeDisplay1a">39sp</dimen>
+    <dimen name="fontSizeDisplay1">34sp</dimen>
+    <dimen name="fontSizeDisplay0">30sp</dimen>
+    <dimen name="fontSizeDisplay01">28sp</dimen>
+
+    <dimen name="fontSizeHeadline">24sp</dimen>
+    <dimen name="fontSizeTitle">21sp</dimen>
+    <!-- should be bold -->
+    <dimen name="fontSizeSubheading">17sp</dimen>
+    <dimen name="fontSizeBody2">15sp</dimen>
+    <dimen name="fontSizeBody1">15sp</dimen>
+    <!-- should be bold -->
+    <dimen name="fontSizeCaption3">11sp</dimen>
+    <dimen name="fontSizeCaption2">12sp</dimen>
+    <dimen name="fontSizeCaption">13sp</dimen>
+    <dimen name="fontSizeButton">15sp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="fontSizeListViewSection">14sp</dimen>
+    <dimen name="fontSizeSpinnerLabel">14sp</dimen>
+    <dimen name="listViewItemRightIcon">28sp</dimen>
+
+    <dimen name="margin_a">3dp</dimen>
+    <dimen name="margin_b">5dp</dimen>
+    <dimen name="margin_c">7dp</dimen>
+    <dimen name="margin_d">10dp</dimen>
+    <dimen name="margin_e">15dp</dimen>
+    <dimen name="margin_f">20dp</dimen>
+    <dimen name="margin_g">25dp</dimen>
+    <dimen name="margin_h">30dp</dimen>
+    <dimen name="margin_i">35dp</dimen>
+    <dimen name="margin_j">40dp</dimen>
+    <dimen name="margin_k">45dp</dimen>
+    <dimen name="margin_l">50dp</dimen>
+    <dimen name="margin_m">55dp</dimen>
+    <dimen name="margin_n">60dp</dimen>
+    <dimen name="margin_n1">63dp</dimen>
+    <dimen name="margin_o">65dp</dimen>
+    <dimen name="margin_p">70dp</dimen>
+    <dimen name="margin_q">75dp</dimen>
+    <dimen name="margin_r">80dp</dimen>
+    <dimen name="margin_s">85dp</dimen>
+    <dimen name="margin_t">90dp</dimen>
+    <dimen name="margin_u">95dp</dimen>
+    <dimen name="margin_v">100dp</dimen>
+    <dimen name="margin_w">105dp</dimen>
+    <dimen name="margin_x">110dp</dimen>
+    <dimen name="margin_y">115dp</dimen>
+    <dimen name="margin_z">120dp</dimen>
+
+    <dimen name="margin_1a">125dp</dimen>
+    <dimen name="margin_1b">130dp</dimen>
+    <dimen name="margin_1c">135dp</dimen>
+    <dimen name="margin_1d">140dp</dimen>
+    <dimen name="margin_1e">145dp</dimen>
+    <dimen name="margin_1f">150dp</dimen>
+    <dimen name="margin_1g">155dp</dimen>
+    <dimen name="margin_1h">160dp</dimen>
+    <dimen name="margin_1i">165dp</dimen>
+    <dimen name="margin_1j">170dp</dimen>
+    <dimen name="margin_1k">175dp</dimen>
+    <dimen name="margin_1l">180dp</dimen>
+    <dimen name="margin_1m">185dp</dimen>
+    <dimen name="margin_1n">190dp</dimen>
+    <dimen name="margin_1o">195dp</dimen>
+    <dimen name="margin_1p">200dp</dimen>
+    <dimen name="margin_1q">205dp</dimen>
+    <dimen name="margin_1r">210dp</dimen>
+    <dimen name="margin_1s">215dp</dimen>
+    <dimen name="margin_1t">220dp</dimen>
+    <dimen name="margin_1u">225dp</dimen>
+    <dimen name="margin_1v">230dp</dimen>
+    <dimen name="margin_1w">235dp</dimen>
+    <dimen name="margin_1x">240dp</dimen>
+    <dimen name="margin_1y">245dp</dimen>
+    <dimen name="margin_1z">250dp</dimen>
+
+    <dimen name="drawable_dialog_icon">50dp</dimen>
+    <dimen name="dialog_text_size">15sp</dimen>
+    <dimen name="map_icon_width_height">30dp</dimen>
+</resources>

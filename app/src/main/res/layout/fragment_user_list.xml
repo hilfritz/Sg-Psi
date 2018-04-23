@@ -1,0 +1,39 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.contactlist.main.userlist.UserListFragment">
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/userListView"
+        >
+    </android.support.v7.widget.RecyclerView>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        tools:text="hi there, error message here"
+        android:id="@+id/messageTextView"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/progressBar"
+        style="?android:attr/textAppearanceMedium"
+        android:layout_marginBottom="@dimen/padding_a"
+        android:padding="@dimen/padding_a"
+        android:textColor="@color/text_color"
+        android:visibility="gone"
+        />
+
+</RelativeLayout>
