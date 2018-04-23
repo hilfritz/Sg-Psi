@@ -3,7 +3,6 @@ package com.hilfritz.mvp.ui.psi;
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.hilfritz.mvp.AndroidTest;
 import com.hilfritz.mvp.api.psi.pojo.PsiPojo;
 
 import org.json.JSONObject;
@@ -24,8 +23,8 @@ import rx.functions.Func1;
 import rx.plugins.RxJavaHooks;
 import rx.schedulers.Schedulers;
 
-import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
@@ -38,17 +37,18 @@ import static org.mockito.Mockito.when;
  * common error: https://github.com/robolectric/robolectric/issues/2949
  * http://www.vogella.com/tutorials/Mockito/article.html
  */
-public class PsiMapPresenterImplTest extends AndroidTest {
+public class PsiMapPresenterImplTest {
 
     private static final String TAG = "PsiMapPresenterImplTest";
     PsiMapPresenterImpl presenter;
     PsiMapContract.View view;
     PsiMapContract.Model model;
-    Gson gson = new Gson();
-    Scheduler bgThread, mainThread = Schedulers.io();
+    Gson gson;
+    Scheduler bgThread, mainThread ;
 
     @Before
     public void before() {
+        gson = new Gson();
         //MOCKS THE subscribeOn(Schedulers.io()) to use the same thread the test is being run on
         //Schedulers.trampoline() runs the test in the same thread used by the test
         RxJavaHooks.setOnIOScheduler(new Func1<Scheduler, Scheduler>() {
@@ -61,6 +61,8 @@ public class PsiMapPresenterImplTest extends AndroidTest {
         //MOCKS
         view = mock (PsiMapContract.View.class);
         model = mock(PsiMapContract.Model.class);
+        bgThread = Schedulers.io();
+        mainThread = bgThread;
 
     }
 
@@ -74,6 +76,7 @@ public class PsiMapPresenterImplTest extends AndroidTest {
 
         //>>>> CONDITIONS
         presenter = new PsiMapPresenterImpl();
+        when(view.getStringFromStringResId(anyInt())).thenReturn("");
         PsiPojo sampleJsonPojoTemp = getSampleJsonPojo();
         Observable<PsiPojo> sampleJsonPojo= Observable.just(sampleJsonPojoTemp);
 
@@ -105,10 +108,15 @@ public class PsiMapPresenterImplTest extends AndroidTest {
     public void loadPsiDataFail(){
         //>>>> CONDITIONS
         presenter = new PsiMapPresenterImpl();
-
+        when(view.getStringFromStringResId(anyInt())).thenReturn("errorMessage");
         Observable<PsiPojo> empty = Observable.<PsiPojo>empty();
         //alternative 1
-        when (model.getAllPsi()).thenReturn(empty);
+        final Exception exception = new Exception("somewthing wrong");
+        final Throwable throwable = new Throwable(exception);
+        final Observable<PsiPojo> error = Observable.<PsiPojo>error(throwable);
+
+        when(model.getAllPsi()).thenReturn(error);
+        //when (model.getAllPsi()).thenReturn(empty);
         //alternative 2
         /*
         model = new PsiMapContract.Model() {
@@ -126,7 +134,7 @@ public class PsiMapPresenterImplTest extends AndroidTest {
         //>>>>> VERIFY
         verify(view,times(1)).showLoading();    //LOADING WAS ONLY SHOWN 1
         verify(view,times(1)).hideLoading();    //HIDE LOADING WAS ONLY SHOWN 1
-        verify(view, times(1)).showDialogWithMessage(anyString());   //MAKE SURE ERROR DIALOG WAS CALLED
+        verify(view, times(1)).showDialogWithMessage("errorMessage");   //MAKE SURE ERROR DIALOG WAS CALLED
         verify(view, never()).showMapWithData((PsiPojo) any()); //MADE SURE SHOW MAP DATA WAS NOT CALLED
 
     }
@@ -146,7 +154,7 @@ public class PsiMapPresenterImplTest extends AndroidTest {
         try {
 
 
-            br = new BufferedReader(new FileReader("sample.json"));
+            br = new BufferedReader(new FileReader("raw/sample.json"));
             String line;
 
             while ((line = br.readLine()) != null) {
