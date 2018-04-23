@@ -1,6 +1,5 @@
 package com.hilfritz.mvp.util;
 
-import android.util.Log;
 import android.view.View;
 
 import rx.Observable;
@@ -20,9 +19,7 @@ public class RxUtil {
      * @return boolean TRUE if subscrption is still on going, (like network request is still on going)
      */
     public static final boolean isSubscribed(Subscription subscription){
-        Log.d(TAG, "isSubscribed: ");
         if (subscription!=null && subscription.isUnsubscribed()==false){
-            Log.d(TAG, "isSubscribed: true");
             return true;
         }
         return false;
@@ -34,7 +31,6 @@ public class RxUtil {
      */
     public static final void unsubscribe(Subscription subscription){
         if (RxUtil.isSubscribed(subscription)){
-            Log.d(TAG, "unsubscribe: ");
             subscription.unsubscribe();
         }
     }
