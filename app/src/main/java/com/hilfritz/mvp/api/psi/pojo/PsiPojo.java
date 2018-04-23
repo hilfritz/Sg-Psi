@@ -1,10 +1,10 @@
 
 package com.hilfritz.mvp.api.psi.pojo;
 
-import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.hilfritz.mvp.ui.psi.helper.ReadingsContainer;
+
+import java.util.List;
 
 public class PsiPojo {
 
@@ -17,6 +17,9 @@ public class PsiPojo {
     @SerializedName("api_info")
     @Expose
     private ApiInfo apiInfo;
+
+    String lastUpdated = "";
+    String date = "";
 
     public List<RegionMetadatum> getRegionMetadata() {
         return regionMetadata;
@@ -42,4 +45,19 @@ public class PsiPojo {
         this.apiInfo = apiInfo;
     }
 
+    public String getLastUpdated() {
+        return lastUpdated;
+    }
+
+    public void setLastUpdated(String lastUpdated) {
+        this.lastUpdated = lastUpdated;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 }

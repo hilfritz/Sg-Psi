@@ -27,5 +27,6 @@ public interface PsiMapContract {
         void showMapWithData(PsiPojo psiPojo);
         String getStringFromStringResId(int stringResID);
         void showTitle(String str);
+        void showTimings(String date, String lastUpdate);
     }
 }

@@ -62,6 +62,9 @@ public class PsiMapActivityFragment extends Fragment implements PsiMapContract.V
     @BindView(R.id.title)
     TextView titleTextView;
 
+    @BindView(R.id.timings)
+    TextView timingsTextView;
+
     PsiMapContract.Model model;
 
     public PsiMapActivityFragment() {
@@ -194,6 +197,12 @@ public class PsiMapActivityFragment extends Fragment implements PsiMapContract.V
             titleTextView.setText(getString(R.string.label_status, str));
         }
 
+    }
+
+    @Override
+    public void showTimings(String date, String lastUpdate) {
+        timingsTextView.setVisibility(View.VISIBLE);
+        timingsTextView.setText(getString(R.string.label_timings, date, ""));
     }
 
     @OnClick(R.id.populateButton)

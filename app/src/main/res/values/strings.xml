@@ -87,4 +87,5 @@
     <string name="google_maps_key">AIzaSyBOEKcFKSFOexwrl79ARCATuPn6k6fZGQQ</string>
     <string name="label_status">Status: %1$s</string>
     <string name="label_status_na">Status: Not Available</string>
+    <string name="label_timings"> Date: %1$s </string>
 </resources>

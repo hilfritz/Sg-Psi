@@ -5,8 +5,13 @@ import com.hilfritz.mvp.R;
 import com.hilfritz.mvp.api.psi.pojo.Item;
 import com.hilfritz.mvp.api.psi.pojo.PsiPojo;
 import com.hilfritz.mvp.api.psi.pojo.RegionMetadatum;
+import com.hilfritz.mvp.util.DateUtil;
 import com.hilfritz.mvp.util.RxUtil;
 
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -62,6 +67,28 @@ public class PsiMapPresenterImpl implements PsiMapContract.Presenter {
                                 regionMetadatum.setMapSnippet(snippet);
                             }
                         }
+                        //GENERATE THE LAST UPDATED VALUE
+                        if (psiPojo!=null && psiPojo.getItems()!=null && psiPojo.getItems().size()==1){
+                            final Item item = psiPojo.getItems().get(0);
+                            final DateTimeZone sgTimezone = DateTimeZone.forID("Asia/Singapore");
+                            String dateTimeFormat = DateUtil.DISPLAY_DATE_FORMAT7;
+                            String dateFormat = DateUtil.DISPLAY_DATE_FORMAT3;
+
+                            DateTimeFormatter dateFormatter = DateTimeFormat.forPattern(dateFormat).withZone(sgTimezone);
+                            DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(dateTimeFormat).withZone(sgTimezone);
+                            String lastUpdateStr = "";
+                            String dateStr = "";
+                            if (item!=null && item.getUpdateTimestamp().isEmpty()==false){
+                                DateTime lastUpdate = DateTime.parse(item.getUpdateTimestamp()).withZone(sgTimezone);
+                                lastUpdateStr = dateTimeFormatter.print(lastUpdate);
+                            }
+                            if (item!=null && item.getTimestamp().isEmpty()==false){
+                                DateTime lastUpdate = DateTime.parse(item.getTimestamp()).withZone(sgTimezone);
+                                dateStr = dateFormatter.print(lastUpdate);
+                            }
+                            psiPojo.setDate(dateStr);
+                            psiPojo.setLastUpdated(lastUpdateStr);
+                        }
                         return Observable.just(psiPojo);
                     }
                 })
@@ -110,9 +137,14 @@ public class PsiMapPresenterImpl implements PsiMapContract.Presenter {
                             return;
                         }
                         String status = "";
+
+
                         if (psiPojo.getApiInfo()!=null){
                             status = psiPojo.getApiInfo().getStatus();
                         }
+
+                        view.showTimings(psiPojo.getDate(), psiPojo.getLastUpdated());
+
                         view.showTitle(status);
                         view.showMapWithData(psiPojo);
 

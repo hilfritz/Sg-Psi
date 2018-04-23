@@ -7,7 +7,6 @@
     tools:context=".ui.psi.PsiMapActivityFragment"
     tools:showIn="@layout/activity_psi_map"
     android:orientation="vertical"
-
     >
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,8 +14,25 @@
         android:visibility="invisible"
         android:background="@color/transparent"
         android:padding="@dimen/margin_d"
-
+        tools:visibility="visible"
         >
+        <TextView
+            android:id="@+id/timings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_alignParentLeft="true"
+            android:paddingLeft="@dimen/margin_a"
+            android:paddingRight="@dimen/margin_a"
+            android:paddingTop="@dimen/margin_a"
+            android:paddingBottom="@dimen/margin_d"
+            android:textSize="@dimen/fontSizeBody2"
+            android:visibility="invisible"
+            tools:visibility="visible"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            />
+
         <TextView
             android:background="@drawable/rounded_corner_white"
             android:id="@+id/title"
