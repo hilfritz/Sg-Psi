@@ -10,14 +10,17 @@ import com.hilfritz.mvp.util.RxUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.net.SocketTimeoutException;
+import java.net.UnknownHostException;
 import java.util.List;
 
+import retrofit2.adapter.rxjava.HttpException;
 import rx.Observable;
 import rx.Scheduler;
 import rx.Subscriber;
 import rx.Subscription;
 import rx.functions.Func1;
-import rx.schedulers.Schedulers;
 
 /**
  * @author Hilfritz Camallere on 21/4/18
@@ -47,7 +50,7 @@ public class PsiMapPresenterImpl implements PsiMapContract.Presenter {
                 .flatMap(new Func1<PsiPojo, Observable<PsiPojo>>() {
                     @Override
                     public Observable<PsiPojo> call(PsiPojo psiPojo) {
-                        //GENERATE THE SNIPPETS FOR THE MAP, ARRANGE THE DATA
+                        //ARRANGING DATA: GENERATE THE SNIPPETS FOR THE MAP
                         if (psiPojo!=null && psiPojo.getRegionMetadata()!=null && psiPojo.getRegionMetadata().size()>0){
                             int size = psiPojo.getRegionMetadata().size();
                             for (int x=0; x<size;x++){
@@ -72,7 +75,22 @@ public class PsiMapPresenterImpl implements PsiMapContract.Presenter {
                     @Override
                     public void onError(Throwable e) {
                         view.hideLoading();
-                        view.showDialogWithMessage(" Error:\n"+e.getLocalizedMessage()+" \n"+view.getStringFromStringResId(R.string.something_went_wrong));
+                        String message = "";
+                        if (e instanceof UnknownHostException) {
+                            message = view.getStringFromStringResId(R.string.label_no_internet);
+                        }else if (e instanceof HttpException) {
+                            //ResponseBody responseBody = ((HttpException) e).response().errorBody();
+                            //message = " 1 error";
+                            message = view.getStringFromStringResId(R.string.label_connection_error);
+                        } else if (e instanceof SocketTimeoutException) {
+                            message = view.getStringFromStringResId(R.string.something_went_wrong);
+                        } else if (e instanceof IOException) {
+                            message = view.getStringFromStringResId(R.string.label_connection_error);
+                        } else {
+                            message = e.getMessage();
+                        }
+
+                        view.showDialogWithMessage(message);
                         e.printStackTrace();
                         RxUtil.unsubscribe(getAllPsiSubscription);
                     }
@@ -83,14 +101,12 @@ public class PsiMapPresenterImpl implements PsiMapContract.Presenter {
                             view. showDialogWithMessage(view.getStringFromStringResId(R.string.not_available_region_data));
                             return;
                         }
-
                         //4. CHECK PSI DATA
                         if (psiPojo==null){
                             //4.1 CHECK PSI DATA - IF WRONG DATA, SHOW ERROR MESSAGE
                             view.showDialogWithMessage(view.getStringFromStringResId(R.string.something_went_wrong));
                             return;
                         }
-
                         view.showMapWithData(psiPojo);
                     }
                 });
