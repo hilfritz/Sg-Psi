@@ -143,9 +143,10 @@ public class PsiMapPresenterImpl implements PsiMapContract.Presenter {
                             status = psiPojo.getApiInfo().getStatus();
                         }
 
-                        view.showTimings(psiPojo.getDate(), psiPojo.getLastUpdated());
+
 
                         view.showTitle(status);
+                        view.showTimings(psiPojo.getDate(), psiPojo.getLastUpdated());
                         view.showMapWithData(psiPojo);
 
                     }

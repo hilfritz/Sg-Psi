@@ -20,17 +20,15 @@
             android:id="@+id/timings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/mobile_green_a"
             android:layout_alignParentLeft="true"
-            android:paddingLeft="@dimen/margin_a"
-            android:paddingRight="@dimen/margin_a"
-            android:paddingTop="@dimen/margin_a"
-            android:paddingBottom="@dimen/margin_d"
-            android:textSize="@dimen/fontSizeBody2"
+            android:padding="@dimen/margin_d"
+            android:textSize="@dimen/fontSizeCaption"
             android:visibility="invisible"
             tools:visibility="visible"
             android:textStyle="bold"
-            android:textAllCaps="true"
+            tools:text="sample"
+            android:background="@drawable/rounded_corner_white"
             />
 
         <TextView
@@ -38,10 +36,12 @@
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/light_blue_600"
+            android:textColor="@color/mobile_green_a"
             android:layout_alignParentRight="true"
             android:padding="@dimen/margin_d"
             android:textStyle="bold"
+            tools:text="sample"
+            android:textSize="@dimen/fontSizeCaption"
             />
     </RelativeLayout>
     <Button

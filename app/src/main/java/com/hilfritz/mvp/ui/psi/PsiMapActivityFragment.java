@@ -202,7 +202,7 @@ public class PsiMapActivityFragment extends Fragment implements PsiMapContract.V
     @Override
     public void showTimings(String date, String lastUpdate) {
         timingsTextView.setVisibility(View.VISIBLE);
-        timingsTextView.setText(getString(R.string.label_timings, date, ""));
+        timingsTextView.setText(getString(R.string.label_timings, date));
     }
 
     @OnClick(R.id.populateButton)
