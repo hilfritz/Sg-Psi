@@ -60,7 +60,7 @@ dependencies {
     implementation "com.android.support:design:$android_support_version"
 
     testImplementation 'junit:junit:4.12'
-
+    testImplementation 'org.json:json:20140107'
     /**
      * TESTS
      * https://stackoverflow.com/questions/40696796/android-how-to-use-espresso-2-2-2-with-support-25-0-0
