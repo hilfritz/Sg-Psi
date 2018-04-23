@@ -14,6 +14,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/populateButton"
         android:text="refresh"
+        android:background="@drawable/button_green"
+        android:textColor="@color/white"
+        android:textSize="@dimen/fontSizeBody1"
         />
     <!--
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"

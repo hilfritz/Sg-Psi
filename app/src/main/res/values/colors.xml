@@ -12,4 +12,8 @@
     <color name="dialog_background">#F1F5F7</color>
     <color name="dialog_text">#ADB9C3</color>
     <color name="light_blue_600">#5586C2</color>
+    <color name="mobile_green">#60c4ba</color>
+    <color name="mobile_green_a">#1ac1b1</color>
+    <color name="mobile_green_b">#3cf3d3</color>
+
 </resources>
