@@ -117,7 +117,12 @@ public class SimpleDialog extends DialogFragment {
 
     public void setDrawableId(int drawableId){
         Log.d(TAG, "setDrawableId: ");
-        icon.setImageURI(FrescoUtil.getUriFromDrawableId(drawableId));
+        if (drawableId==0){
+            icon.setVisibility(View.GONE);
+        }else{
+            icon.setImageURI(FrescoUtil.getUriFromDrawableId(drawableId));
+        }
+
     }
 
     /**
