@@ -5,7 +5,6 @@ import android.content.Context;
 import androidx.multidex.MultiDex;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
-import com.hilfritz.mvp.BuildConfig;
 import com.hilfritz.mvp.dagger2.component.AppComponent;
 import com.hilfritz.mvp.dagger2.component.DaggerAppComponent;
 import com.hilfritz.mvp.dagger2.module.CacheModule;
@@ -13,10 +12,6 @@ import com.hilfritz.mvp.dagger2.module.PresenterModule;
 import com.hilfritz.mvp.dagger2.module.RestApiModule;
 import com.hilfritz.mvp.dagger2.module.SessionModule;
 import com.hilfritz.mvp.dagger2.module.UtilityModule;
-import com.hilfritz.mvp.util.logging.LogFileManager;
-import com.hilfritz.mvp.util.logging.TimberFileLogTree;
-
-import timber.log.Timber;
 
 /**
  * Created by Hilfritz P. Camallere on 6/4/2016.
@@ -32,7 +27,6 @@ public class MyApplication extends Application {
         initializeLeakCanary();
         initializeDagger();
         Fresco.initialize(this);
-        initializeTimber();
     }
 
     private void initializeLeakCanary(){
@@ -47,15 +41,7 @@ public class MyApplication extends Application {
         // Normal app init code...
     }
 
-    private void initializeTimber() {
-        //Timber.plant(new Timber.DebugTree());
-        if (BuildConfig.DEBUG){
-            Timber.plant(new TimberFileLogTree(new LogFileManager(this)));
-            //Timber.plant(new Timber.DebugTree());
-        }else{
-            Timber.plant(new TimberFileLogTree(new LogFileManager(this)));
-        }
-    }
+
 
     private void initializeDagger() {
         appComponent = DaggerAppComponent.builder()
