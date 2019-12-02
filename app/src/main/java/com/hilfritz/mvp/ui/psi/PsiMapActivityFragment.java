@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -113,7 +114,14 @@ public class PsiMapActivityFragment extends Fragment implements PsiMapContract.V
 
     @Override
     public void hideLoading() {
-        FullscreenLoadingDialog.hideLoading();
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                FullscreenLoadingDialog.hideLoading();
+            }
+        }, 500);
+        //FullscreenLoadingDialog.hideLoading();
     }
 
     @Override

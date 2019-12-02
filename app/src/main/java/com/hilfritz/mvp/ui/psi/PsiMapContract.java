@@ -1,5 +1,6 @@
 package com.hilfritz.mvp.ui.psi;
 
+import com.hilfritz.mvp.api.psi.pojo.Item;
 import com.hilfritz.mvp.api.psi.pojo.PsiPojo;
 
 import rx.Observable;
@@ -14,6 +15,8 @@ public interface PsiMapContract {
         void init(View view, Model model, Scheduler bgThread, Scheduler mainThread);
         void populate();
         void destroy();
+        String getReadingsPerRegionMetaData(PsiPojo psiPojo, String regionName);
+        String getReadingsByRegionName(String regionName, Item item);
     }
 
     public interface Model{

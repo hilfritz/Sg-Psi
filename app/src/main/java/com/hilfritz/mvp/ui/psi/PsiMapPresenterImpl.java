@@ -19,7 +19,6 @@ import java.io.IOException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import retrofit2.adapter.rxjava.HttpException;
 import rx.Observable;
@@ -53,7 +52,8 @@ public class PsiMapPresenterImpl implements PsiMapContract.Presenter {
         view.showLoading();
         //2. CALL PSI DATA FROM API
         getAllPsiSubscription = model.getAllPsi()
-                .delay(500, TimeUnit.MILLISECONDS)
+                .observeOn(bgThread)
+                .subscribeOn(bgThread)
                 .flatMap(new Func1<PsiPojo, Observable<PsiPojo>>() {
                     @Override
                     public Observable<PsiPojo> call(PsiPojo psiPojo) {
@@ -66,6 +66,7 @@ public class PsiMapPresenterImpl implements PsiMapContract.Presenter {
                                 String snippet = getReadingsPerRegionMetaData(psiPojo, regionName);
                                 regionMetadatum.setMapSnippet(snippet);
                             }
+                        }else{
                         }
                         //GENERATE THE LAST UPDATED VALUE
                         if (psiPojo!=null && psiPojo.getItems()!=null && psiPojo.getItems().size()==1){
@@ -88,6 +89,7 @@ public class PsiMapPresenterImpl implements PsiMapContract.Presenter {
                             }
                             psiPojo.setDate(dateStr);
                             psiPojo.setLastUpdated(lastUpdateStr);
+                        }else{
                         }
                         return Observable.just(psiPojo);
                     }
@@ -105,6 +107,7 @@ public class PsiMapPresenterImpl implements PsiMapContract.Presenter {
                     public void onError(Throwable e) {
                         view.hideLoading();
                         String message = "";
+
                         if (e instanceof UnknownHostException) {
                             message = view.getStringFromStringResId(R.string.label_no_internet);
                         }else if (e instanceof HttpException) {

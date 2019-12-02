@@ -11,11 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import rx.Observable;
 import rx.Scheduler;
@@ -23,6 +19,7 @@ import rx.functions.Func1;
 import rx.plugins.RxJavaHooks;
 import rx.schedulers.Schedulers;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -70,6 +67,10 @@ public class PsiMapPresenterImplTest {
     public void after() {
         RxJavaHooks.reset();
     }
+    @Test
+    public void sampleTest(){
+        assertEquals(1,1);
+    }
 
     @Test
     public void loadPsiDataSuccess(){
@@ -77,20 +78,20 @@ public class PsiMapPresenterImplTest {
         //>>>> CONDITIONS
         presenter = new PsiMapPresenterImpl();
         when(view.getStringFromStringResId(anyInt())).thenReturn("");
-        PsiPojo sampleJsonPojoTemp = getSampleJsonPojo();
-        Observable<PsiPojo> sampleJsonPojo= Observable.just(sampleJsonPojoTemp);
+        final PsiPojo sampleJsonPojoTemp = getSampleJsonPojo();
+        final Observable<PsiPojo> sampleJsonPojo= Observable.just(sampleJsonPojoTemp);
 
         //alternative 1
         when (model.getAllPsi()).thenReturn(sampleJsonPojo);
         //alternative 2
-        /*
-        model = new PsiMapContract.Model() {
-            @Override
-            public PsiPojo getAllPsi() {
-                return sampleJsonPojo;
-            }
-        };
-        */
+
+//        model = new PsiMapContract.Model() {
+//            @Override
+//            public Observable<PsiPojo> getAllPsi() {
+//                return sampleJsonPojo;
+//            }
+//        };
+
 
         //>>>> ACTION
         presenter.init(view,model,bgThread,mainThread);
@@ -144,19 +145,12 @@ public class PsiMapPresenterImplTest {
     }
 
     public JSONObject getSampleJsonObject(){
-
-
-
         JSONObject retVal = null;
         StringBuilder text = new StringBuilder();
         BufferedReader br = null;
-
         try {
-
-
             br = new BufferedReader(new FileReader("raw/sample.json"));
             String line;
-
             while ((line = br.readLine()) != null) {
                 text.append(line);
                 text.append('\n');
@@ -175,42 +169,9 @@ public class PsiMapPresenterImplTest {
         return retVal;
     }
 
-    public void displayAllFilesDirectories(){
-        File deleteme = new File("deleteme");
-        try {
-            deleteme.createNewFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        List<File> listFiles = getListFiles(deleteme);
-        for (int x = 0; x< listFiles.size(); x++){
-            File file = listFiles.get(x);
-            if (file.isDirectory()){
-                log(">>"+file.getName());
-            }else{
-                log(">>=="+file.getName());
-            }
-        }
-    }
-
     public void log(String str){
         Log.d(TAG, str);
         //System.out.println(str);
-    }
-
-    private List<File> getListFiles(File parentDir) {
-        ArrayList<File> inFiles = new ArrayList<File>();
-        File[] files = parentDir.listFiles();
-        for (File file : files) {
-            if (file.isDirectory()) {
-                inFiles.addAll(getListFiles(file));
-            } else {
-                //if(file.getName().endsWith(".csv")){
-                    inFiles.add(file);
-                //}
-            }
-        }
-        return inFiles;
     }
 
 }
