@@ -2,7 +2,7 @@ package com.hilfritz.mvp.ui.psi.views;
 
 import android.app.Activity;
 import android.graphics.PorterDuff;
-import android.support.v4.content.ContextCompat;
+import androidx.core.content.ContextCompat;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;

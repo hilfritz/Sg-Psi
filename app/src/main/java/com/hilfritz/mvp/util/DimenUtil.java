@@ -1,7 +1,7 @@
 package com.hilfritz.mvp.util;
 
 import android.content.Context;
-import android.support.annotation.DimenRes;
+import androidx.annotation.DimenRes;
 
 /**
  * Created by Hilfritz Camallere on 19/12/16.

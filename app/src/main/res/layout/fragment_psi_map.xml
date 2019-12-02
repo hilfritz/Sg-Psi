@@ -48,7 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/populateButton"
-        android:text="refresh"
+        android:text="@string/label_refresh"
         android:background="@drawable/button_green"
         android:textColor="@color/white"
         android:textSize="@dimen/fontSizeBody1"

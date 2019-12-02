@@ -3,8 +3,9 @@ package com.hilfritz.mvp.util;
 import android.content.Context;
 import android.graphics.drawable.Animatable;
 import android.net.Uri;
-import android.support.annotation.DrawableRes;
 import android.util.Log;
+
+import androidx.annotation.DrawableRes;
 
 import com.facebook.common.util.UriUtil;
 import com.facebook.drawee.backends.pipeline.Fresco;

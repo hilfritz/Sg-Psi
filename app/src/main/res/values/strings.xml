@@ -88,4 +88,5 @@
     <string name="label_status">Status: %1$s</string>
     <string name="label_status_na">Status: Not Available</string>
     <string name="label_timings">Date: %1$s </string>
+    <string name="label_refresh">refresh</string>
 </resources>

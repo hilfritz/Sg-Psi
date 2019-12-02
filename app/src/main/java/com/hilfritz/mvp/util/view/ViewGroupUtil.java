@@ -1,10 +1,11 @@
 package com.hilfritz.mvp.util.view;
 
 import android.os.Build;
-import android.support.design.widget.AppBarLayout;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewOutlineProvider;
+
+import com.google.android.material.appbar.AppBarLayout;
 
 /**
  * Created by Hilfritz Camallere on 13/2/17.

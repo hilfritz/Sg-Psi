@@ -2,7 +2,7 @@ package com.hilfritz.mvp.application;
 
 import android.app.Application;
 import android.content.Context;
-import android.support.multidex.MultiDex;
+import androidx.multidex.MultiDex;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.hilfritz.mvp.BuildConfig;
@@ -15,7 +15,6 @@ import com.hilfritz.mvp.dagger2.module.SessionModule;
 import com.hilfritz.mvp.dagger2.module.UtilityModule;
 import com.hilfritz.mvp.util.logging.LogFileManager;
 import com.hilfritz.mvp.util.logging.TimberFileLogTree;
-import com.squareup.leakcanary.LeakCanary;
 
 import timber.log.Timber;
 

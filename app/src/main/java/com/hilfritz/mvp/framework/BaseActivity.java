@@ -3,8 +3,9 @@ package com.hilfritz.mvp.framework;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.hilfritz.mvp.framework.helper.AppVisibilityInterface;
 
